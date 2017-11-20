@@ -40,6 +40,9 @@ use CSD\Marketo\Response\IsMemberOfListResponse;
  */
 class Client extends GuzzleClient
 {
+    // ae
+    private $token;
+
     /**
      * {@inheritdoc}
      */
@@ -80,9 +83,24 @@ class Client extends GuzzleClient
         $client->addSubscriber($auth);
         $client->setDescription(ServiceDescription::factory(__DIR__ . '/service.json'));
         $client->setDefaultOption('headers/Content-Type', 'application/json');
+        $client->setToken($grantType->getTokenData()['access_token']);  // ae
 
         return $client;
     }
+
+    // ae
+    public function setToken(string $token)
+    {
+        $this->token = $token;
+    }
+
+    // ae
+    public function getToken()
+    {
+        return $this->token;
+    }
+
+
 
     /**
      * Import Leads via file upload
