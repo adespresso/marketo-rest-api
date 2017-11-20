@@ -76,7 +76,7 @@ class Client extends GuzzleClient
         if ($config->get('bulk') === true) {
             $restUrl = sprintf('%s/bulk/v%d', rtrim($url, '/'), $config->get('version'));
         } else {
-            $restUrl = sprintf('%s/rest/v%d', rtrim($url, '/'), $config->get('version'));
+            $restUrl = sprintf('%s/v%d', rtrim($url, '/'), $config->get('version'));    // ae: had redundant "rest/"
         }
 
         $client = new self($restUrl, $config);
