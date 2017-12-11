@@ -702,6 +702,12 @@ class Client extends GuzzleClient
         return $this->getResult('approveEmailbyId', $args, false, $returnRaw);
     }
 
+    // ae
+    public function getStatsUsage()
+    {
+        return $this->getResult('getStatsUsage', array());
+    }
+
     /**
      * Internal helper method to actually perform command.
      *

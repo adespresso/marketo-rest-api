@@ -247,6 +247,13 @@
                 "id": {"location": "uri"}
                 },
             "responseClass": "CSD\\Marketo\\Response\\ApproveEmailResponse"
+        },
+        "getStatsUsage": {
+            "httpMethod": "GET",
+            "uri": "stats/usage.json",
+            "parameters": {
+                "id": {"location": "uri"}
+            }
         }
     }
 }
