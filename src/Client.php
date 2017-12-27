@@ -46,7 +46,7 @@ class Client extends GuzzleClient
     /**
      * {@inheritdoc}
      */
-    public static function factory($config = array())
+    public static function factory($config = array(), $apiKey = '')
     {
         $default = array(
             'url' => false,
@@ -70,7 +70,7 @@ class Client extends GuzzleClient
             $url = sprintf('https://%s.mktorest.com', $munchkin);
         }
 
-        $grantType = new Credentials($url, $config->get('client_id'), $config->get('client_secret'));
+        $grantType = new Credentials($url, $config->get('client_id'), $config->get('client_secret'), $apiKey);
         $auth = new Oauth2Plugin($grantType);
 
         if ($config->get('bulk') === true) {

@@ -37,15 +37,21 @@ class Credentials implements GrantTypeInterface
     private $clientSecret;
 
     /**
+     * @var
+     */
+    private $apiKey;
+
+    /**
      * @param string $url
      * @param string $clientId
      * @param string $clientSecret
      */
-    public function __construct($url, $clientId, $clientSecret)
+    public function __construct($url, $clientId, $clientSecret, $apiKey)
     {
         $this->url = $url;
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
+        $this->apiKey = $apiKey;
     }
 
     /**
@@ -58,7 +64,8 @@ class Credentials implements GrantTypeInterface
         $params = array(
             'grant_type' => 'client_credentials',
             'client_id' => $this->clientId,
-            'client_secret' => $this->clientSecret
+            'client_secret' => $this->clientSecret,
+            'partner_id' => $this->apiKey
         );
 
         $request = $client->get('/identity/oauth/token', null, array('query' => $params));
